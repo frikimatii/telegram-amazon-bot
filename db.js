@@ -1,6 +1,6 @@
 const { MongoClient, ObjectId } = require("mongodb");
 
-const url = "mongodb+srv://fernandomatiasjuarez88:pwwm9eo6O7i7IKyv@basededatosmatias.fxkuru7.mongodb.net/?retryWrites=true&w=majority";
+const url = "mongodb+srv://fernandomatiasjuarez88:pwwm9eo6O7i7IKyv@basededatosmatias.fxkuru7.mongodb.net/?retryWrites=true&w=majority&appName=basededatosMATIAS";
 const client = new MongoClient(url);
 const dbName = "tienda";
 const coleccionNombre = "productos";
