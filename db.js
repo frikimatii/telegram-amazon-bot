@@ -3,7 +3,7 @@ const { MongoClient, ObjectId } = require("mongodb");
 const client = new MongoClient(process.env.MONGO_URI, {
   tls: true,
   tlsAllowInvalidCertificates: false,
-   serverApi: "1"
+   serverApi: { version: "1" }
 });
 
 const dbName = "tienda";
