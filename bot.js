@@ -2,16 +2,16 @@ const TelegramBot = require("node-telegram-bot-api");
 const { getCategorias, getRandomProducto, getRandomProductoPorCategoria } = require("./db");
 
 // Token de tu bot
-const token = "8499019920:AAHzFqodCClJUhxH-X3tvlNxuYFfcA5dnIE";
+const token = process.env.BOT_TOKEN;
 const bot = new TelegramBot(token, { polling: true });
 
 // ID del chat o grupo para producto destacado cada hora
-const CHAT_ID_GENERAL = "6436144827";
+const CHAT_ID_GENERAL = process.env.CHAT_ID_GENERAL;
 
 // Mensaje de bienvenida con emojis
 bot.onText(/\/start/, async (msg) => {
   const chatId = msg.chat.id;
-const bienvenida = `
+  const bienvenida = `
 👋 ¡Hola ${msg.from.first_name}!
 
 💡 Este bot te ayuda a encontrar productos con ofertas de Amazon:
@@ -22,7 +22,6 @@ const bienvenida = `
 
 💰 Todos los productos incluyen enlaces de referido de Amazon
 `;
-
   bot.sendMessage(chatId, bienvenida);
 });
 
@@ -53,7 +52,6 @@ bot.onText(/\/categoria/, async (msg) => {
   }
 
   const botones = categorias.map((cat) => [{ text: `📂 ${cat}`, callback_data: cat }]);
-
   bot.sendMessage(chatId, "📋 Elegí una categoría:", {
     reply_markup: { inline_keyboard: botones }
   });
